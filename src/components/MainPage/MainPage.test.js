@@ -4,6 +4,7 @@ import MainPage from './MainPage';
 
 let wrapper;
 let wrapper2;
+let wrapper3;
 
 beforeEach(()=>{
     const mockProps ={
@@ -39,3 +40,19 @@ it('filters robots correctly', ()=>{
     }]);   
 })
 
+
+it('filters robots correctly part 2', ()=>{
+    const mockProps3 ={
+        onRequestRobots: jest.fn(),
+        robots: [{
+            id: 3,
+            name: 'John',
+            email: 'john@gmail.com'
+        }],
+        searchField: 'a',
+        isPending: false
+    }
+    const filteredRobots = []
+    wrapper3 = shallow(<MainPage {...mockProps3}/>)    
+    expect(wrapper3.instance().filterRobots()).toEqual(filteredRobots);   
+})
